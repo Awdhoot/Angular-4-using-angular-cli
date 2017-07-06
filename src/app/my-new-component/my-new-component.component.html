@@ -1,9 +1,22 @@
 <p>
   my-new-component works!
 </p>
-<input type="text" class="form-control" name="filterData" [(ngModel)]="test" />
-{{test}}
+<!--<input type="text" class="form-control" name="filterData" [(ngModel)]="test" />-->
+<!--{{test}}-->
 
-<ul class="list-group" *ngFor="let fruit of data | myFilterPipe:test">
-  <li class="list-group-item">{{fruit}}</li>
+<!--<ul class="list-group" *ngFor="let fruit of data | myFilterPipe:test">-->
+  <!--<li class="list-group-item">{{fruit}}</li>-->
+<!--</ul>-->
+<!--<div class="test">SOME TEXT</div>-->
+
+<div class="input-filter">
+  <input type="text" class="form-control" name="filterData" #input [(ngModel)]="inputString">
+INPUT -> {{input.value}}
+</div>
+<pre>
+  <ul class="list-group">
+  <li *ngFor="let fruit of data | myFilterPipe:inputString; let i = index" class="list-group-item">{{fruit}}</li>
 </ul>
+</pre>
+
+{{d | json}}
