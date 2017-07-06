@@ -1,0 +1,9 @@
+<p>
+  my-new-component works!
+</p>
+<input type="text" class="form-control" name="filterData" [(ngModel)]="test" />
+{{test}}
+
+<ul class="list-group" *ngFor="let fruit of data | myFilterPipe:test">
+  <li class="list-group-item">{{fruit}}</li>
+</ul>
