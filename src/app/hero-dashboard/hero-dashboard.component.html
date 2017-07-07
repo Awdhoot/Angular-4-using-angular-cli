@@ -1,0 +1,10 @@
+
+<div class="top-heroes-container">
+  <h3>Top Heroes</h3>
+  <ul class="list-inline" *ngIf="topHeroes.length">
+    <li *ngFor="let topHero of topHeroes">{{topHero.name}}</li>
+  </ul>
+    <div *ngIf="!topHeroes.length" class="alert alert-warning" role="alert">
+      <strong>Warning!</strong> Your hero list does not have top heroes.  <strong><a [routerLink]="['/home/heroes','data']">Click here</a></strong> to add heroes
+    </div>
+</div>

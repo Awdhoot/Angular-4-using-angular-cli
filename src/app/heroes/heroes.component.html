@@ -1,0 +1,22 @@
+<h3>Heroes</h3>
+
+<div class="add-hero">
+  <input type="text" name="addHero" [(ngModel)]="newHero" (ngModelChange)="heroError = false" #input/>
+  <button type="button" class="btn btn-sm" (click)="addHero(newHero)">Add</button>
+  <div class="alert alert-danger" role="alert" *ngIf="heroError">
+    <strong>Oh snap!</strong> {{input.value}} is already present in the list!!!
+  </div>
+</div>
+<div class="hero-list">
+<ul class="list-group list-unstyled">
+  <li class="list-group-item hero-brief" *ngFor="let hero of heroes; let heroIndex = index" appSome #visibleData="toggle">
+    <span class="hero-id badge pull-left">{{hero.id}}</span>
+    <span class="list-group-item-text hero-name">{{hero.name}}</span>
+    <span class="close-icon text-danger pull-right" (click)="deleteHero(hero, heroIndex)" *ngIf="visibleData.isHighlighted">
+      <i class="glyphicon glyphicon-remove-circle"></i>
+    </span>
+    <div class="clearfix"></div>
+  </li>
+</ul>
+</div>
+
