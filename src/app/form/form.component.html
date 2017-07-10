@@ -1,0 +1,52 @@
+<div class="container">
+  <div [hidden]="submitted">
+    <h1>Hero Form</h1>
+    <form #myForm="ngForm" (ngSubmit)="onSubmit(myForm)">
+      <div class="form-group">
+        <label for="name">Name</label>
+        <input type="text" class=" no-style form-control" id="name"
+               required
+               [(ngModel)]="model.name" name="name"
+               #name="ngModel">
+        <div [hidden]="name.valid || name.pristine"
+             class="alert alert-danger">
+          Name is required
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input type="text" class=" no-style form-control" id="email" [pattern]="emailPattern" #email="ngModel"
+               [(ngModel)]="model.email" name="email">
+        <div [hidden]="email.valid || email.pristine"
+             class="alert alert-danger">
+          Email is invalid
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="branch">Hero Power</label>
+        <select class=" no-style form-control" id="branch"
+                required
+                [(ngModel)]="model.branch" name="branch"
+                #branch="ngModel">
+          <option [value]="''">Select</option>
+          <option [value]="null">Select</option>
+
+          <option *ngFor="let branch of branches" [value]="branch">{{branch}}</option>
+        </select>{{model.branch}}
+        <div [hidden]="branch.valid || branch.pristine" class="alert alert-danger">
+          Branch is required
+        </div>
+      </div>
+
+      <button type="submit" class="btn btn-success" [disabled]="!myForm.form.valid">Submit</button>
+      <button type="button" class="btn btn-default" (click)="newModel(myForm);">Reset</button>
+
+      <div>
+        <hr>
+        Name via form.controls = {{showFormControls(myForm)}}
+      </div>
+    </form>
+  </div>
+</div>

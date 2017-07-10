@@ -5,12 +5,16 @@ import { AppComponent } from './app.component';
 import { MyNewComponentComponent } from './my-new-component/my-new-component.component';
 import {FormsModule} from '@angular/forms';
 import { MyFilterPipePipe } from './my-filter-pipe.pipe';
+import { FormComponent } from './form/form.component';
+import { ValidatorDirective } from './validator.directive';
 
 @NgModule({
   declarations: [
     AppComponent,
     MyNewComponentComponent,
-    MyFilterPipePipe
+    MyFilterPipePipe,
+    FormComponent,
+    ValidatorDirective
   ],
   imports: [
     BrowserModule, FormsModule
