@@ -1,5 +1,5 @@
-import {Component, OnInit} from '@angular/core';
-import {NgForm} from '@angular/forms';
+import {Component, OnInit, ViewChild} from '@angular/core';
+import {FormBuilder, FormControl, FormGroup, NgForm, Validators} from '@angular/forms';
 
 @Component({
   selector: 'app-form',
@@ -7,12 +7,23 @@ import {NgForm} from '@angular/forms';
   styleUrls: ['./form.component.scss']
 })
 export class FormComponent implements OnInit {
+  firstName: FormControl;
+  address: FormControl;
+  form: FormGroup;
+
+
   emailPattern = new RegExp('[a-zA-Z0-9]+@[a-z]+\.(com|in)');
   model: any;
   submitted: boolean;
   branches: Array<string> = [];
 
-  constructor() {
+  constructor(private  formBuilder: FormBuilder) {
+    this.firstName = new FormControl('', Validators.maxLength(5));
+    this.address = new FormControl('', Validators.minLength(5));
+    this.form = this.formBuilder.group({
+      'firstName': this.firstName,
+      'address': this.address
+    });
   }
 
   ngOnInit() {
