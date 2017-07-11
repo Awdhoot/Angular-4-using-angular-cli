@@ -1,0 +1,6 @@
+<p>
+  heroes works!
+</p>
+<button type="button" class="btn btn-default" (click)="getHeroes()">Get Heroes</button>
+<input type="text" [(ngModel)]="heroName" placeholder="enter name of hero">
+<button type="button" (click)="addHero(); heroName = ''">Add Hero</button>
